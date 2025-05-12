@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
+    "emitDecoratorMetadata": false,
     "esModuleInterop": true,
     "module": "CommonJS",
     "moduleResolution": "node",

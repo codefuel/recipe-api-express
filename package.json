@@ -12,6 +12,7 @@
     "prepare": "husky install",
     "pretty": "prettier --print-width 120 --write '*/src/**/*.ts",
     "start": "ts-node src/server.ts",
+    "start:localdev": "nodemon --watch src --ext ts,json --exec ts-node src/server.ts",
     "test": "jest --no-cache --runInBand",
     "test:integration": "npm run test -- --testPathPattern='\\.integration\\.test\\.'",
     "test:unit": "npm run test -- --testPathPattern='\\.unit\\.test\\.'"

@@ -1,6 +1,5 @@
-# Created by https://www.gitignore.io/api/node
-
 ### Node ###
+
 # Logs
 logs
 *.log
@@ -34,6 +33,35 @@ build/Release
 node_modules
 jspm_packages
 
+### MacOS generated
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+### IDE generated
+•vscode/
+.idea/
+*.eclipse
+•settings
+.ctags
+•tags
+*.sublime-workspace
+cmake-build-debug/
+*.swp
+
+### Npm generated
+node_modules/
+ipm-debug.log*
+
+### Jest default coverage directory
+coverage/
+
+# Build artifacts
+dist/
+
 # Optional npm cache directory
 .npm
 
@@ -43,7 +71,5 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
-lib/
-dist/
-
+config/
 NOTES.txt

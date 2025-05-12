@@ -1,12 +1,15 @@
 import { ApiError } from '../commands/apiError';
-import config from '../commands/getConfig';
 import { deleteRecipe } from '../infrastructure/theMealDb';
-import { getRecipe } from '../infrastructure/theMealDb';
+import {
+  getRandomRecipe,
+  getRecipeById,
+  getRecipeByFirstLetter,
+  getRecipeByName,
+} from '../infrastructure/theMealDb';
 
-export const getRecipeByName = async (name: string) => {
+export const lookupRecipeByName = async (name: string) => {
   try {
-    const api = config.theMealDb.api;
-    const result = await getRecipe(`${api}/search.php?s=${name}`);
+    const result = await getRecipeByName(name);
     return result.data.meals;
   } catch (error) {
     if (error instanceof ApiError) {
@@ -17,10 +20,9 @@ export const getRecipeByName = async (name: string) => {
   }
 };
 
-export const getRecipeByFristLetter = async (letter: string) => {
+export const lookupRecipeByFristLetter = async (letter: string) => {
   try {
-    const api = config.theMealDb.api;
-    return await getRecipe(`${api}/search.php?f=${letter}`);
+    return await getRecipeByFirstLetter(letter);
   } catch (error) {
     if (error instanceof ApiError) {
       // log
@@ -30,10 +32,9 @@ export const getRecipeByFristLetter = async (letter: string) => {
   }
 };
 
-export const getRecipeById = async (id: number) => {
+export const lookupRecipeById = async (recipeId: number) => {
   try {
-    const api = config.theMealDb.api;
-    return await getRecipe(`${api}/lookup.php?i=${id}`);
+    return await getRecipeById(recipeId);
   } catch (error) {
     if (error instanceof ApiError) {
       // log
@@ -43,10 +44,9 @@ export const getRecipeById = async (id: number) => {
   }
 };
 
-export const getRandomRecipe = async () => {
+export const lookupRandomRecipe = async () => {
   try {
-    const api = config.theMealDb.api;
-    return await getRecipe(`${api}/random.php`);
+    return await getRandomRecipe();
   } catch (error) {
     if (error instanceof ApiError) {
       // log
@@ -58,8 +58,7 @@ export const getRandomRecipe = async () => {
 
 export const deleteRecipeById = async (recipeId: number) => {
   try {
-    const api = config.theMealDb.api;
-    return await deleteRecipe(`${api}/${recipeId}`);
+    return await deleteRecipe(recipeId);
   } catch (error) {
     if (error instanceof ApiError) {
       // log

@@ -19,7 +19,7 @@ describe('GET /recipe?name=...', () => {
   });
 
   it('should return 200 and success: true when fetching succeeds', async () => {
-    const mockGet = mealDbService.getRecipeByName as jest.Mock;
+    const mockGet = mealDbService.lookupRecipeByName as jest.Mock;
     const mockMeals = [{ id: 1, name: 'Test Meal' }];
     mockGet.mockResolvedValue(mockMeals);
     
@@ -38,8 +38,8 @@ describe('GET /recipe?name=...', () => {
     expect(response.body.errors[0].msg).toBe('Invalid value');
   });
 
-  it('should return 500 if getRecipeByName throws', async () => {
-    const mockGet = mealDbService.getRecipeByName as jest.Mock;
+  it('should return 500 if lookupRecipeByName throws', async () => {
+    const mockGet = mealDbService.lookupRecipeByName as jest.Mock;
     mockGet.mockRejectedValue(new Error('DB error'));
 
     const response = await request(app).get('/api/v1/recipe').query({ name: 'nachos' });

@@ -1,6 +1,6 @@
 import { Router, RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { getRecipeByName } from '../../../../domain/theMealDbService';
+import { lookupRecipeByName } from '../../../../domain/theMealDbService';
 import { query, validationResult } from 'express-validator';
 
 const router = Router();
@@ -19,7 +19,7 @@ const getRecipeHandler: RequestHandler = async (req, res) => {
   try {
     const name = req.query.name as string;
 
-    const meals = await getRecipeByName(name);
+    const meals = await lookupRecipeByName(name);
     res.status(StatusCodes.OK).json({success: true, meals});
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({success: false, error});

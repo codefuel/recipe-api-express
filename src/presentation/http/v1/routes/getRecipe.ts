@@ -1,4 +1,4 @@
-import { Router, Request, RequestHandler, Response } from 'express';
+import { Router, RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { getRecipeByName } from '../../../../domain/theMealDbService';
 import { query, validationResult } from 'express-validator';

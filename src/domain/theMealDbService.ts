@@ -1,5 +1,6 @@
 import { ApiError } from '../commands/apiError';
 import config from '../commands/getConfig';
+import { deleteRecipe } from '../infrastructure/theMealDb';
 import { getRecipe } from '../infrastructure/theMealDb';
 
 export const getRecipeByName = async (name: string) => {
@@ -46,6 +47,19 @@ export const getRandomRecipe = async () => {
   try {
     const api = config.theMealDb.api;
     return await getRecipe(`${api}/random.php`);
+  } catch (error) {
+    if (error instanceof ApiError) {
+      // log
+    } else {
+      throw new Error();
+    }
+  }
+};
+
+export const deleteRecipeById = async (recipeId: number) => {
+  try {
+    const api = config.theMealDb.api;
+    return await deleteRecipe(`${api}/${recipeId}`);
   } catch (error) {
     if (error instanceof ApiError) {
       // log

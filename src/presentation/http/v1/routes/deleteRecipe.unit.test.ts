@@ -34,9 +34,9 @@ describe('DELETE /recipe/:recipeId', () => {
     expect(response.status).toBe(400);
     expect(response.body.success).toBe(false);
     expect(response.body.error[0].msg).toBe('recipeId must be a number');
-    });
+  });
 
-    it('should return 500 if deleteRecipeById throws', async () => {
+  it('should return 500 if deleteRecipeById throws', async () => {
     const mockDelete = mealDbService.deleteRecipeById as jest.Mock;
     mockDelete.mockRejectedValue(new Error('DB error'));
 

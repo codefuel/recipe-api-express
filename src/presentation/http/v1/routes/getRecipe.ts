@@ -16,10 +16,14 @@ const getRecipeHandler: RequestHandler = async (req, res) => {
     return;
   }
 
-  const name = req.query.name as string;
+  try {
+    const name = req.query.name as string;
 
-  const meals = await getRecipeByName(name);
-  res.status(StatusCodes.OK).json({success: true, meals});
+    const meals = await getRecipeByName(name);
+    res.status(StatusCodes.OK).json({success: true, meals});
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({success: false, error});
+  }
 };
 
 /**

@@ -1,11 +1,16 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  roots: ['<rootDir>/tests'],
-  testMatch: ['**/*.test.ts'],
-  moduleFileExtensions: ['ts', 'js', 'json'],
+  automock: false,
   collectCoverage: true,
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov'],
+  coveragePathIgnorePatterns: ['<rootDir>/node_modules'],
+  moduleFileExtensions: ['ts', 'js', 'json'],
+  modulePathIgnorePatterns: ['/node_modules'],
+  modulePaths: ['/node_modules'],
+  preset: 'ts-jest',
+  // roots: ['<rootDir>/tests'],
+  testEnvironment: 'node',
+  testPathIgnorePatterns: ['/node_modules', '/dist'],
+  testRegex: '\\.test\\.[jt]sx?$',
 };

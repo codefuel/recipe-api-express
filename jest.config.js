@@ -9,7 +9,6 @@ module.exports = {
   modulePathIgnorePatterns: ['/node_modules'],
   modulePaths: ['/node_modules'],
   preset: 'ts-jest',
-  // roots: ['<rootDir>/tests'],
   testEnvironment: 'node',
   testPathIgnorePatterns: ['/node_modules', '/dist'],
   testRegex: '\\.test\\.[jt]sx?$',

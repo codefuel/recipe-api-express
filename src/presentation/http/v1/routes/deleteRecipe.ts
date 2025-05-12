@@ -6,21 +6,24 @@ import { param, validationResult } from 'express-validator';
 const router = Router();
 
 const deleteRecipeHandler: RequestHandler = async (req, res) => {
-  console.log(req);
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
     res.status(StatusCodes.BAD_REQUEST).json({
       success: false,
-      errors: errors.array()
+      error: errors.array()
     });
     return;
   }
 
-  const recipeId = req.params.recipeId as unknown as number;
+  try {
+    const recipeId = req.params.recipeId as unknown as number;
 
-  await deleteRecipeById(recipeId);
-  res.status(StatusCodes.OK).json({success: true});
+    await deleteRecipeById(recipeId);
+    res.status(StatusCodes.OK).json({success: true});
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({success: false, error});
+  }
 };
 
 router.delete(

@@ -1,6 +1,6 @@
 import { Router, RequestHandler, Request, Response, NextFunction } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { lookupRecipeById, lookupRecipeByFristLetter, lookupRecipeByName } from '../../../../domain/theMealDbService';
+import { lookupRandomRecipe, lookupRecipeById, lookupRecipeByFristLetter, lookupRecipeByName } from '../../../../domain/theMealDbService';
 import { param, query, validationResult } from 'express-validator';
 
 const router = Router();
@@ -90,6 +90,39 @@ router.get(
     getRecipeHandler
   ],
 );
+
+/**
+ * @openapi
+ * /api/v1/recipe/random:
+ *   get:
+ *     summary: Get a random recipe
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved random recipe
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 meals:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ */
+// Place the /random route before the /:recipeId route to prevent parameter matching
+router.get('/recipe/random', async (req: Request, res: Response) => {
+  try {
+    const meals = await lookupRandomRecipe();
+    res.status(StatusCodes.OK).json({ success: true, meals });
+  } catch (error) {
+    res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ success: false, error: 'Failed to get random recipe' });
+  }
+});
 
 /**
  * @openapi

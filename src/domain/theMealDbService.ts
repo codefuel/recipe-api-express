@@ -9,8 +9,8 @@ import {
 
 export const lookupRecipeByName = async (name: string) => {
   try {
-    const result = await getRecipeByName(name);
-    return result.data.meals;
+    const response = await getRecipeByName(name);
+    return response.data.meals;
   } catch (error) {
     if (error instanceof ApiError) {
       // log
@@ -22,7 +22,8 @@ export const lookupRecipeByName = async (name: string) => {
 
 export const lookupRecipeByFristLetter = async (letter: string) => {
   try {
-    return await getRecipeByFirstLetter(letter);
+    const response = await getRecipeByFirstLetter(letter);
+    return response.data.meals
   } catch (error) {
     if (error instanceof ApiError) {
       // log
@@ -34,7 +35,8 @@ export const lookupRecipeByFristLetter = async (letter: string) => {
 
 export const lookupRecipeById = async (recipeId: number) => {
   try {
-    return await getRecipeById(recipeId);
+    const response = await getRecipeById(recipeId);
+    return response.data.meals;
   } catch (error) {
     if (error instanceof ApiError) {
       // log
@@ -46,7 +48,8 @@ export const lookupRecipeById = async (recipeId: number) => {
 
 export const lookupRandomRecipe = async () => {
   try {
-    return await getRandomRecipe();
+    const response = await getRandomRecipe();
+    return response.data.meals;
   } catch (error) {
     if (error instanceof ApiError) {
       // log

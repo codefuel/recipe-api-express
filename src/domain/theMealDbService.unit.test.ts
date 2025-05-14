@@ -47,7 +47,7 @@ describe('theMealDbService', () => {
       mockGetRecipeByFirstLetter.mockResolvedValue({ data: { meals: ['A'] } });
       const result = await lookupRecipeByFristLetter('a');
       expect(mockGetRecipeByFirstLetter).toHaveBeenCalledWith('a');
-      expect(result?.data.meals).toEqual(['A']);
+      expect(result).toEqual(['A']);
     });
 
     it('does not throw on ApiError', async () => {
@@ -67,7 +67,7 @@ describe('theMealDbService', () => {
       mockGetRecipeById.mockResolvedValue({ data: { meals: ['Meal42'] } });
       const result = await lookupRecipeById(42);
       expect(mockGetRecipeById).toHaveBeenCalledWith(42);
-      expect(result?.data.meals).toEqual(['Meal42']);
+      expect(result).toEqual(['Meal42']);
     });
 
     it('does not throw on ApiError', async () => {
@@ -87,7 +87,7 @@ describe('theMealDbService', () => {
       mockGetRandomRecipe.mockResolvedValue({ data: { meals: ['RandomMeal'] } });
       const result = await lookupRandomRecipe();
       expect(mockGetRandomRecipe).toHaveBeenCalled();
-      expect(result?.data.meals).toEqual(['RandomMeal']);
+      expect(result).toEqual(['RandomMeal']);
     });
 
     it('does not throw on ApiError', async () => {

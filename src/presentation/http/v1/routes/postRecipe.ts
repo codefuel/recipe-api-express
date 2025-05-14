@@ -5,7 +5,7 @@ const router = Router();
 
 /**
  * @openapi
- * /v1/recipe:
+ * /api/v1/recipe:
  *   post:
  *     summary: Create a new recipe
  *     requestBody:
@@ -18,14 +18,17 @@ const router = Router();
  *               name:
  *                 type: string
  *                 description: Name of the recipe
+ *                 example: "Tap Water"
  *               ingredients:
  *                 type: array
  *                 items:
  *                   type: string
  *                 description: List of ingredients
+ *                 example: ["1 glass", "1 cup water"]
  *               instructions:
  *                 type: string
  *                 description: Cooking instructions
+ *                 example: "Do the thing!"
  *     responses:
  *       200:
  *         description: Recipe successfully created

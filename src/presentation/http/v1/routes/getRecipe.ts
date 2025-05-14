@@ -28,7 +28,7 @@ const getRecipeHandler: RequestHandler = async (req, res) => {
 
 /**
  * @openapi
- * /v1/recipe:
+ * /api/v1/recipe:
  *   get:
  *     summary: Get recipes by name
  *     parameters:

@@ -5,7 +5,7 @@ const router = Router();
 
 /**
  * @openapi
- * /v1/recipe:
+ * /api/v1/recipe:
  *   put:
  *     summary: Update an existing recipe
  *     requestBody:
@@ -18,17 +18,21 @@ const router = Router();
  *               id:
  *                 type: integer
  *                 description: ID of the recipe to update
+ *                 example: 1
  *               name:
  *                 type: string
  *                 description: Updated name of the recipe
+ *                 example: "Tap Water"
  *               ingredients:
  *                 type: array
  *                 items:
  *                   type: string
  *                 description: Updated list of ingredients
+ *                 example: ["1 glass", "1 cup water"]
  *               instructions:
  *                 type: string
  *                 description: Updated cooking instructions
+ *                 example: "Do the thing!"
  *     responses:
  *       200:
  *         description: Recipe successfully updated

@@ -28,7 +28,7 @@ const deleteRecipeHandler: RequestHandler = async (req, res) => {
 
 /**
  * @openapi
- * /v1/recipe/{recipeId}:
+ * /api/v1/recipe/{recipeId}:
  *   delete:
  *     summary: Delete a recipe by ID
  *     parameters:
@@ -38,6 +38,7 @@ const deleteRecipeHandler: RequestHandler = async (req, res) => {
  *           type: integer
  *         required: true
  *         description: Numeric ID of the recipe to delete
+ *         example: 1
  *     responses:
  *       200:
  *         description: Recipe successfully deleted

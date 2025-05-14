@@ -26,6 +26,59 @@ const deleteRecipeHandler: RequestHandler = async (req, res) => {
   }
 };
 
+/**
+ * @openapi
+ * /v1/recipe/{recipeId}:
+ *   delete:
+ *     summary: Delete a recipe by ID
+ *     parameters:
+ *       - in: path
+ *         name: recipeId
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: Numeric ID of the recipe to delete
+ *     responses:
+ *       200:
+ *         description: Recipe successfully deleted
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *       400:
+ *         description: Invalid recipeId parameter
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 error:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       msg:
+ *                         type: string
+ *                         example: recipeId must be a number
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 error:
+ *                   type: object
+ */
 router.delete(
   '/recipe/:recipeId',
   [

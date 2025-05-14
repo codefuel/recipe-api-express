@@ -1,6 +1,6 @@
 import axios from 'axios';
-import config from '../commands/getConfig';
-import { ApiError } from '../commands/apiError';
+import config from '../../commands/getConfig';
+import { ApiError } from '../../commands/apiError';
 
 const api = config.theMealDb.api;
 
@@ -40,11 +40,9 @@ export const getRandomRecipe = async () => {
   }
 };
 
-
-// TODO: Stubbed as an example
 export const deleteRecipe = async (recipeId: number) => {
   try {
-    // const response = await axios.delete(`${api}/${recipeId}`);
+    await axios.delete("");
     return {success: true, message: 'Stubbed delete recipe response'};
   } catch (error) {
     throw new ApiError("Failed to delete recipe");

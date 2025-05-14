@@ -7,9 +7,9 @@ import {
 } from './theMealDbService';
 
 import { ApiError } from '../commands/apiError';
-import * as theMealDb from '../infrastructure/theMealDb';
+import * as theMealDb from '../infrastructure/apis/theMealDb';
 
-jest.mock('../infrastructure/theMealDb');
+jest.mock('../infrastructure/apis/theMealDb');
 
 describe('theMealDbService', () => {
   const mockGetRecipeByName = theMealDb.getRecipeByName as jest.Mock;

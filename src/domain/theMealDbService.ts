@@ -1,11 +1,11 @@
 import { ApiError } from '../commands/apiError';
-import { deleteRecipe } from '../infrastructure/theMealDb';
+import { deleteRecipe } from '../infrastructure/apis/theMealDb';
 import {
   getRandomRecipe,
   getRecipeById,
   getRecipeByFirstLetter,
   getRecipeByName,
-} from '../infrastructure/theMealDb';
+} from '../infrastructure/apis/theMealDb';
 
 export const lookupRecipeByName = async (name: string) => {
   try {

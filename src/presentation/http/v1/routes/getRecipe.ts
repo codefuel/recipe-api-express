@@ -1,6 +1,11 @@
 import { Router, RequestHandler, Request, Response, NextFunction } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { lookupRandomRecipe, lookupRecipeById, lookupRecipeByFristLetter, lookupRecipeByName } from '../../../../domain/theMealDbService';
+import {
+  lookupRandomRecipe,
+  lookupRecipeById,
+  lookupRecipeByFristLetter,
+  lookupRecipeByName
+} from '../../../../domain/theMealDbService';
 import { param, query, validationResult } from 'express-validator';
 
 const router = Router();

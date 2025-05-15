@@ -24,7 +24,7 @@ const router = Router();
 router.get('/ping', (req: Request, res: Response) => {
   
   // TODO stubbed resposne
-  const response = {success: "OK"};
+  const response = {message: "pong"};
   res.status(StatusCodes.OK).json(response);
 });
 
